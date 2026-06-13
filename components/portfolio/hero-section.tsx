@@ -230,32 +230,33 @@ export function HeroSection() {
         </motion.div>
 
         {/* Liens réseaux sociaux avec animations */}
-        <motion.div variants={itemVariants} className="flex items-center gap-6">
-          {[
-            { href: PROFILE.socialLinks.github, Icon: GithubIcon, label: 'GitHub' },
-            { href: PROFILE.socialLinks.linkedin, Icon: LinkedinIcon, label: 'LinkedIn' },
-            { href: PROFILE.socialLinks.email, Icon: Mail, label: 'Email', isEmail: true },
-          ].map(({ href, Icon, label, isEmail }, i) => (
-            <motion.a
-              key={label}
-              href={href}
-              target={isEmail ? undefined : '_blank'}
-              rel={isEmail ? undefined : 'noopener noreferrer'}
-              className="text-muted-foreground hover:text-primary transition-colors relative group"
-              aria-label={label}
-              variants={techIconVariants}
-              whileHover={{ scale: 1.2, y: -5 }}
-              whileTap={{ scale: 0.9 }}
-              custom={i}
-            >
-              <Icon className="h-6 w-6" />
-              {/* Tooltip */}
-              <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-foreground text-background px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                {label}
-              </span>
-            </motion.a>
-          ))}
-        </motion.div>
+       <motion.div variants={itemVariants} className="flex items-center gap-6">
+  {[
+    { href: 'https://github.com/Koudjo02/', Icon: GithubIcon, label: 'GitHub', isEmail: false },
+    { href: 'https://www.linkedin.com/in/koudjo-samuel-adzogble-870a00336', Icon: LinkedinIcon, label: 'LinkedIn', isEmail: false },
+    { href: 'mailto:samuel.adzogble@epitech.eu', Icon: Mail, label: 'Email', isEmail: true },
+  ].map(({ href, Icon, label, isEmail }, i) => (
+    <motion.a
+      key={label}
+      href={href}
+      target={isEmail ? undefined : '_blank'}
+      rel={isEmail ? undefined : 'noopener noreferrer'}
+      className="text-muted-foreground hover:text-primary transition-colors relative group"
+      aria-label={label}
+      variants={techIconVariants}
+      whileHover={{ scale: 1.2, y: -5 }}
+      whileTap={{ scale: 0.9 }}
+      custom={i}
+    >
+      <Icon className="h-6 w-6" />
+      
+      {/* Tooltip */}
+      <span className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-xs bg-foreground text-background px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+        {label}
+      </span>
+    </motion.a>
+  ))}
+</motion.div>
 
         {/* Indicateur de scroll animé */}
         <motion.div

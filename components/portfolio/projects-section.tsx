@@ -463,7 +463,7 @@ export function ProjectsSection() {
             className="mt-12 text-center"
           >
             <a
-            href="/cv/MonCV.pdf"
+            href="/MonCV.pdf"
             target="_blank"
             rel="noopener noreferrer"
 className="inline-flex items-center gap-2 rounded-xl border border-border/50 bg-secondary/40 px-8 py-4 text-lg font-semibold text-foreground hover:bg-emerald-400/20 hover:border-emerald-950 hover:text-emerald-200 transition-all duration-200"

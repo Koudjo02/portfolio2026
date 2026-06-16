@@ -1,64 +1,58 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Mail, MapPin, Send, Loader2, Github, Linkedin } from 'lucide-react';
+import { Mail, MapPin, MessageCircle } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/icons';
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
-const initialFormData: ContactFormData = {
-  name: '',
-  email: '',
-  subject: '',
-  message: '',
-};
 
 const contactInfo = {
   email: 'samuel.adzogble@epitech.eu',
   location: "Abidjan, Côte d'Ivoire",
+  whatsapp: '+2250544549585',
   github: 'https://github.com/Koudjo02',
   linkedin: 'https://www.linkedin.com/in/koudjo-samuel-adzogble-870a00336/',
 };
 
 export function ContactSection() {
-  const [formData, setFormData] = useState<ContactFormData>(initialFormData);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      setFormData(initialFormData);
-    } catch {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   const fadeUp = (delay = 0) => ({
     initial: { opacity: 0, y: 24 },
     animate: inView ? { opacity: 1, y: 0 } : {},
     transition: { duration: 0.5, delay },
   });
+
+  const actions = [
+    {
+      icon: <MessageCircle className="h-6 w-6" />,
+      label: 'WhatsApp',
+      description: 'Réponse rapide garantie',
+      href: `https://wa.me/${contactInfo.whatsapp}`,
+      className: 'bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-[#25D366]/20',
+    },
+    {
+      icon: <Mail className="h-6 w-6" />,
+      label: 'Email',
+      description: contactInfo.email,
+      href: `mailto:${contactInfo.email}`,
+      className: 'bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20',
+    },
+    {
+      icon: <GithubIcon className="h-6 w-6" />,
+      label: 'GitHub',
+      description: 'Voir mes projets',
+      href: contactInfo.github,
+      className: 'border border-border/50 bg-card/50 hover:bg-card hover:border-border text-foreground',
+    },
+    {
+      icon: <LinkedinIcon className="h-6 w-6" />,
+      label: 'LinkedIn',
+      description: 'Mon profil professionnel',
+      href: contactInfo.linkedin,
+      className: 'border border-border/50 bg-card/50 hover:bg-card hover:border-border text-foreground',
+    },
+  ];
 
   return (
     <section ref={ref} id="contact" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
@@ -95,7 +89,7 @@ export function ContactSection() {
 
             <p className="text-muted-foreground leading-relaxed">
               Je suis disponible pour des missions freelance, des collaborations ou des opportunités full-time.
-              N&apos;hésitez pas à m&apos;écrire, je serai ravi d&apos;échanger.
+              N&apos;hésitez pas à me contacter, je serai ravi d&apos;échanger.
             </p>
 
             {/* Cartes infos */}
@@ -127,10 +121,7 @@ export function ContactSection() {
                   <div className="min-w-0">
                     <p className="text-xs text-muted-foreground">{item.label}</p>
                     {item.href ? (
-                      <a
-                        href={item.href}
-                        className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block"
-                      >
+                      <a href={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block">
                         {item.value}
                       </a>
                     ) : (
@@ -141,40 +132,11 @@ export function ContactSection() {
               ))}
             </div>
 
-            {/* Réseaux sociaux */}
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.4 }}
-            >
-              <p className="text-xs text-muted-foreground mb-3 uppercase tracking-wider">
-                Retrouvez-moi sur
-              </p>
-              <div className="flex gap-3">
-                {[
-                  { href: contactInfo.github, icon: <GithubIcon className="h-5 w-5" />, label: 'GitHub' },
-                  { href: contactInfo.linkedin, icon: <LinkedinIcon className="h-5 w-5" />, label: 'LinkedIn' },
-                ].map((social) => (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={social.label}
-                    className="flex items-center gap-2 rounded-lg border border-border/50 bg-card/50 px-4 py-2.5 text-sm font-medium text-muted-foreground hover:text-foreground hover:border-border hover:bg-card transition-all duration-200"
-                  >
-                    {social.icon}
-                    {social.label}
-                  </a>
-                ))}
-              </div>
-            </motion.div>
-
             {/* Disponibilité */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.5 }}
+              transition={{ duration: 0.4, delay: 0.4 }}
               className="flex items-center gap-3 rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-4 py-3"
             >
               <span className="relative flex h-2.5 w-2.5">
@@ -187,122 +149,40 @@ export function ContactSection() {
             </motion.div>
           </motion.div>
 
-          {/* ── Colonne droite : formulaire ── */}
+          {/* ── Colonne droite : boutons d'action ── */}
           <motion.div
             {...fadeUp(0.2)}
-            className="lg:col-span-3 rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-6 sm:p-8"
+            className="lg:col-span-3 flex flex-col justify-center gap-4"
           >
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                {/* Nom */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="name" className="text-sm font-medium text-foreground">
-                    Nom
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    placeholder="Votre nom"
-                    required
-                    className="rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
-                  />
-                </div>
-                {/* Email */}
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="email" className="text-sm font-medium text-foreground">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="votre@email.com"
-                    required
-                    className="rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
-                  />
-                </div>
-              </div>
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
+              Me contacter via
+            </p>
 
-              {/* Sujet */}
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="subject" className="text-sm font-medium text-foreground">
-                  Sujet
-                </label>
-                <input
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  placeholder="Sujet de votre message"
-                  required
-                  className="rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 transition"
-                />
-              </div>
-
-              {/* Message */}
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-sm font-medium text-foreground">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  placeholder="Décrivez votre projet ou votre demande..."
-                  required
-                  rows={5}
-                  className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none transition"
-                />
-              </div>
-
-              {/* Statut */}
-              {submitStatus === 'success' && (
-                <motion.p
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="rounded-lg bg-emerald-500/10 border border-emerald-500/20 px-4 py-2.5 text-sm text-emerald-400"
-                >
-                  ✓ Message envoyé avec succès ! Je vous répondrai bientôt.
-                </motion.p>
-              )}
-              {submitStatus === 'error' && (
-                <motion.p
-                  initial={{ opacity: 0, y: -6 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="rounded-lg bg-red-500/10 border border-red-500/20 px-4 py-2.5 text-sm text-red-400"
-                >
-                  Une erreur s&apos;est produite. Veuillez réessayer.
-                </motion.p>
-              )}
-
-              {/* Bouton */}
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-md shadow-primary/20 hover:bg-primary/90 disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-200"
+            {actions.map((action, i) => (
+              <motion.a
+                key={action.label}
+                href={action.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, x: 20 }}
+                animate={inView ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.1 }}
+                className={`flex items-center gap-4 rounded-xl px-5 py-4 transition-all duration-200 backdrop-blur-sm ${action.className}`}
               >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Envoi en cours...
-                  </>
-                ) : (
-                  <>
-                    <Send className="h-4 w-4" />
-                    Envoyer le message
-                  </>
-                )}
-              </button>
-            </form>
+                <div className="shrink-0">{action.icon}</div>
+                <div className="min-w-0">
+                  <p className="font-semibold text-sm">{action.label}</p>
+                  <p className="text-xs opacity-75 truncate">{action.description}</p>
+                </div>
+                <svg className="ml-auto h-4 w-4 opacity-50 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </motion.a>
+            ))}
           </motion.div>
+
         </div>
       </div>
     </section>
   );
 }
-

@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 interface NavLink {
   label: string;
   href: string;
+  download?: boolean;
 }
 
 const navLinks: NavLink[] = [
@@ -27,7 +28,6 @@ export function Header() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
-  // Empêche le scroll quand menu ouvert
   useEffect(() => {
     document.body.style.overflow = isMenuOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -70,7 +70,10 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={(e) => handleNavClick(e, link.href)}
+                  onClick={link.download ? undefined : (e) => handleNavClick(e, link.href)}
+                  download={link.download ? 'MonCV.pdf' : undefined}
+                  target={link.download ? '_blank' : undefined}
+                  rel={link.download ? 'noopener noreferrer' : undefined}
                   className="text-sm text-gray-400 hover:text-white transition-colors relative group"
                 >
                   {link.label}
@@ -179,7 +182,10 @@ export function Header() {
                 >
                   <a
                     href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
+                    onClick={link.download ? undefined : (e) => handleNavClick(e, link.href)}
+                    download={link.download ? 'MonCV.pdf' : undefined}
+                    target={link.download ? '_blank' : undefined}
+                    rel={link.download ? 'noopener noreferrer' : undefined}
                     className="group flex items-center gap-4 px-8 py-4 text-3xl font-bold text-gray-400 hover:text-white transition-colors duration-200"
                   >
                     <span

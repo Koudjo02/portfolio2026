@@ -30,8 +30,7 @@ const categories: SkillCategory[] = [
     color: 'text-blue-400 ring-blue-500/30',
     bg: 'bg-blue-500/10',
     skills: [
-      { name: 'React',  icon: <Layers className="h-4 w-4" /> },
-      { name: 'TypeScript',       icon: <Terminal className="h-4 w-4" /> },
+      { name: 'Next.JS',       icon: <Terminal className="h-4 w-4" /> },
       { name: 'Tailwind CSS',     icon: <Code2 className="h-4 w-4" /> },
       { name: 'Vue.js',    icon: <Code2 className="h-4 w-4" /> },
     ],

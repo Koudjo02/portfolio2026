@@ -3,24 +3,22 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-
-interface NavLink {
-  label: string;
-  href: string;
-  download?: boolean;
-}
-
-const navLinks: NavLink[] = [
-  { label: 'Accueil',      href: '#hero' },
-  { label: 'Compétences',  href: '#skills' },
-  { label: 'Projets',      href: '#projects' },
-  { label: 'Contact',      href: '#contact' },
-  { label: 'Jeux',         href: '#game' },
-];
+import { useLang } from '@/components/LanguageContext';
+import { translations } from '@/components/translations';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { lang, toggleLang } = useLang();
+  const t = translations[lang];
+
+  const navLinks = [
+    { label: t.nav.home,     href: '#hero' },
+    { label: t.nav.skills,   href: '#skills' },
+    { label: t.nav.projects, href: '#projects' },
+    { label: t.nav.contact,  href: '#contact' },
+    { label: t.nav.games,    href: '#game' },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -70,71 +68,58 @@ export function Header() {
                 <a
                   key={link.href}
                   href={link.href}
-                  onClick={link.download ? undefined : (e) => handleNavClick(e, link.href)}
-                  download={link.download ? 'MonCV.pdf' : undefined}
-                  target={link.download ? '_blank' : undefined}
-                  rel={link.download ? 'noopener noreferrer' : undefined}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className="text-sm text-gray-400 hover:text-white transition-colors relative group"
                 >
                   {link.label}
-                  <span
-                    className="absolute -bottom-1 left-0 w-0 h-px bg-[#1D9E75] transition-all duration-300 group-hover:w-full"
-                  />
+                  <span className="absolute -bottom-1 left-0 w-0 h-px bg-[#1D9E75] transition-all duration-300 group-hover:w-full" />
                 </a>
               ))}
+
+              {/* Bouton langue */}
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-[#1D9E75]/40 text-sm font-mono text-[#1D9E75] hover:bg-[#1D9E75]/10 transition-all duration-200"
+              >
+                <span className="text-base">{lang === 'fr' ? '🇫🇷' : '🇬🇧'}</span>
+                <span>{lang === 'fr' ? 'FR' : 'EN'}</span>
+              </button>
             </div>
 
-            {/* Bouton hamburger animé */}
-            <button
-              className="md:hidden relative z-50 w-10 h-10 flex flex-col items-center justify-center gap-[5px]"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-            >
-              <motion.span
-                animate={isMenuOpen
-                  ? { rotate: 45, y: 7, width: '24px' }
-                  : { rotate: 0, y: 0, width: '24px' }
-                }
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                style={{
-                  display: 'block',
-                  height: '2px',
-                  background: isMenuOpen ? '#1D9E75' : 'white',
-                  borderRadius: '2px',
-                  transformOrigin: 'center',
-                }}
-              />
-              <motion.span
-                animate={isMenuOpen
-                  ? { opacity: 0, x: -8 }
-                  : { opacity: 1, x: 0 }
-                }
-                transition={{ duration: 0.2 }}
-                style={{
-                  display: 'block',
-                  height: '2px',
-                  width: '16px',
-                  background: 'white',
-                  borderRadius: '2px',
-                  alignSelf: 'flex-end',
-                  marginRight: '8px',
-                }}
-              />
-              <motion.span
-                animate={isMenuOpen
-                  ? { rotate: -45, y: -7, width: '24px' }
-                  : { rotate: 0, y: 0, width: '24px' }
-                }
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
-                style={{
-                  display: 'block',
-                  height: '2px',
-                  background: isMenuOpen ? '#1D9E75' : 'white',
-                  borderRadius: '2px',
-                  transformOrigin: 'center',
-                }}
-              />
-            </button>
+            {/* Bouton hamburger + langue mobile */}
+            <div className="md:hidden flex items-center gap-3 z-50">
+              {/* Bouton langue mobile */}
+              <button
+                onClick={toggleLang}
+                className="flex items-center gap-1 px-2 py-1 rounded-md border border-[#1D9E75]/40 text-xs font-mono text-[#1D9E75] hover:bg-[#1D9E75]/10 transition-all duration-200"
+              >
+                <span>{lang === 'fr' ? '🇫🇷' : '🇬🇧'}</span>
+                <span>{lang === 'fr' ? 'FR' : 'EN'}</span>
+              </button>
+
+              {/* Hamburger */}
+              <button
+                className="relative w-10 h-10 flex flex-col items-center justify-center gap-[5px]"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              >
+                <motion.span
+                  animate={isMenuOpen ? { rotate: 45, y: 7, width: '24px' } : { rotate: 0, y: 0, width: '24px' }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  style={{ display: 'block', height: '2px', background: isMenuOpen ? '#1D9E75' : 'white', borderRadius: '2px', transformOrigin: 'center' }}
+                />
+                <motion.span
+                  animate={isMenuOpen ? { opacity: 0, x: -8 } : { opacity: 1, x: 0 }}
+                  transition={{ duration: 0.2 }}
+                  style={{ display: 'block', height: '2px', width: '16px', background: 'white', borderRadius: '2px', alignSelf: 'flex-end', marginRight: '8px' }}
+                />
+                <motion.span
+                  animate={isMenuOpen ? { rotate: -45, y: -7, width: '24px' } : { rotate: 0, y: 0, width: '24px' }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  style={{ display: 'block', height: '2px', background: isMenuOpen ? '#1D9E75' : 'white', borderRadius: '2px', transformOrigin: 'center' }}
+                />
+              </button>
+            </div>
           </div>
         </nav>
       </header>
@@ -182,15 +167,10 @@ export function Header() {
                 >
                   <a
                     href={link.href}
-                    onClick={link.download ? undefined : (e) => handleNavClick(e, link.href)}
-                    download={link.download ? 'MonCV.pdf' : undefined}
-                    target={link.download ? '_blank' : undefined}
-                    rel={link.download ? 'noopener noreferrer' : undefined}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="group flex items-center gap-4 px-8 py-4 text-3xl font-bold text-gray-400 hover:text-white transition-colors duration-200"
                   >
-                    <span
-                      className="text-sm font-mono text-[#1D9E75] w-6 opacity-60 group-hover:opacity-100 transition-opacity"
-                    >
+                    <span className="text-sm font-mono text-[#1D9E75] w-6 opacity-60 group-hover:opacity-100 transition-opacity">
                       0{i + 1}
                     </span>
                     <span className="group-hover:translate-x-1 transition-transform duration-200 inline-block">

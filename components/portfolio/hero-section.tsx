@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { ArrowDown, Mail, Code, Smartphone, Globe, Download } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { GithubIcon, LinkedinIcon } from '@/components/icons';
+import { MatrixRain } from '../MatrixRain';
 
 const PROFILE = {
   name: 'SAMUEL K. ADZOGBLE',
@@ -88,6 +89,9 @@ export function HeroSection() {
       id="hero"
       className="min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 pt-16 relative overflow-hidden"
     >
+      {/* Matrix Rain Background */}
+      <MatrixRain />
+
       {/* Icônes tech flottantes en arrière-plan */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div

@@ -4,16 +4,21 @@ import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Mail, MapPin, MessageCircle } from 'lucide-react';
 import { GithubIcon, LinkedinIcon } from '@/components/icons';
+import { useLang } from '@/components/LanguageContext';
+import { translations } from '@/components/translations';
 
 const contactInfo = {
   email: 'samuel.adzogble@epitech.eu',
   location: "Abidjan, Côte d'Ivoire",
-  whatsapp: '+2250544549585',
+  whatsapp: '+2250565568733',
   github: 'https://github.com/Koudjo02',
   linkedin: 'https://www.linkedin.com/in/koudjo-samuel-adzogble-870a00336/',
 };
 
 export function ContactSection() {
+  const { lang } = useLang();
+  const t = translations[lang].contact;
+
   const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
@@ -27,7 +32,7 @@ export function ContactSection() {
     {
       icon: <MessageCircle className="h-6 w-6" />,
       label: 'WhatsApp',
-      description: 'Réponse rapide garantie',
+      description: t.whatsapp,
       href: `https://wa.me/${contactInfo.whatsapp}`,
       className: 'bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-[#25D366]/20',
     },
@@ -41,14 +46,14 @@ export function ContactSection() {
     {
       icon: <GithubIcon className="h-6 w-6" />,
       label: 'GitHub',
-      description: 'Voir mes projets',
+      description: t.github,
       href: contactInfo.github,
       className: 'border border-border/50 bg-card/50 hover:bg-card hover:border-border text-foreground',
     },
     {
       icon: <LinkedinIcon className="h-6 w-6" />,
       label: 'LinkedIn',
-      description: 'Mon profil professionnel',
+      description: t.linkedin,
       href: contactInfo.linkedin,
       className: 'border border-border/50 bg-card/50 hover:bg-card hover:border-border text-foreground',
     },
@@ -56,57 +61,31 @@ export function ContactSection() {
 
   return (
     <section ref={ref} id="contact" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-
-      {/* Lueurs d'ambiance */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-0 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-primary/5 blur-3xl" />
         <div className="absolute right-0 bottom-0 h-80 w-80 rounded-full bg-primary/5 blur-3xl" />
       </div>
 
       <div className="relative mx-auto max-w-6xl">
-
-        {/* Header */}
         <motion.div {...fadeUp(0)} className="mb-16 text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
-            <Mail className="h-4 w-4" />
-            Contact
+            <Mail className="h-4 w-4" />{t.badge}
           </div>
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            Travaillons{' '}
-            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
-              ensemble
-            </span>
+            {t.title}{' '}
+            <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">{t.highlight}</span>
           </h2>
-          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">
-            Un projet en tête ? Une opportunité à partager ? Je réponds généralement sous 24h.
-          </p>
+          <p className="mt-4 text-muted-foreground max-w-xl mx-auto">{t.subtitle}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-10">
-
-          {/* ── Colonne gauche : infos ── */}
           <motion.div {...fadeUp(0.1)} className="lg:col-span-2 flex flex-col gap-6">
+            <p className="text-muted-foreground leading-relaxed">{t.description}</p>
 
-            <p className="text-muted-foreground leading-relaxed">
-              Je suis disponible pour des missions freelance, des collaborations ou des opportunités full-time.
-              N&apos;hésitez pas à me contacter, je serai ravi d&apos;échanger.
-            </p>
-
-            {/* Cartes infos */}
             <div className="flex flex-col gap-3">
               {[
-                {
-                  icon: <Mail className="h-5 w-5" />,
-                  label: 'Email',
-                  value: contactInfo.email,
-                  href: `mailto:${contactInfo.email}`,
-                },
-                {
-                  icon: <MapPin className="h-5 w-5" />,
-                  label: 'Localisation',
-                  value: contactInfo.location,
-                  href: null,
-                },
+                { icon: <Mail className="h-5 w-5" />, label: t.email, value: contactInfo.email, href: `mailto:${contactInfo.email}` },
+                { icon: <MapPin className="h-5 w-5" />, label: t.location, value: contactInfo.location, href: null },
               ].map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -121,9 +100,7 @@ export function ContactSection() {
                   <div className="min-w-0">
                     <p className="text-xs text-muted-foreground">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block">
-                        {item.value}
-                      </a>
+                      <a href={item.href} className="text-sm font-medium text-foreground hover:text-primary transition-colors truncate block">{item.value}</a>
                     ) : (
                       <p className="text-sm font-medium text-foreground">{item.value}</p>
                     )}
@@ -132,7 +109,6 @@ export function ContactSection() {
               ))}
             </div>
 
-            {/* Disponibilité */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -143,21 +119,12 @@ export function ContactSection() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
                 <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-500" />
               </span>
-              <p className="text-sm text-emerald-400 font-medium">
-                Disponible pour de nouvelles opportunités
-              </p>
+              <p className="text-sm text-emerald-400 font-medium">{t.available}</p>
             </motion.div>
           </motion.div>
 
-          {/* ── Colonne droite : boutons d'action ── */}
-          <motion.div
-            {...fadeUp(0.2)}
-            className="lg:col-span-3 flex flex-col justify-center gap-4"
-          >
-            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">
-              Me contacter via
-            </p>
-
+          <motion.div {...fadeUp(0.2)} className="lg:col-span-3 flex flex-col justify-center gap-4">
+            <p className="text-sm text-muted-foreground uppercase tracking-wider mb-2">{t.via}</p>
             {actions.map((action, i) => (
               <motion.a
                 key={action.label}
@@ -180,9 +147,9 @@ export function ContactSection() {
               </motion.a>
             ))}
           </motion.div>
-
         </div>
       </div>
     </section>
   );
 }
+

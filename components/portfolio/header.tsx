@@ -18,6 +18,7 @@ export function Header() {
     { label: t.nav.projects, href: '#projects' },
     { label: t.nav.contact,  href: '#contact' },
     { label: t.nav.games,    href: '#game' },
+    { label: t.nav.about, href: '#about' },
   ];
 
   useEffect(() => {

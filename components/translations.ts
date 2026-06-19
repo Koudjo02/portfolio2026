@@ -6,6 +6,7 @@ export const translations = {
       projects: 'Projets',
       contact: 'Contact',
       games: 'Jeux',
+      about: 'À propos',
     },
     hero: {
       greeting: 'Bonjour, je suis',
@@ -15,6 +16,35 @@ export const translations = {
       contact: 'Me contacter',
       downloadCV: 'Télécharger mon CV',
       scroll: 'Scroll',
+    },
+    about: {
+      badge: 'À propos',
+      title: 'Mon',
+      highlight: 'Parcours',
+      subtitle: 'De mon premier clavier dans un cyber café jusqu\'au développement web — voici mon histoire.',
+      available: 'Disponible pour de nouvelles opportunités',
+      stats: [
+        { value: '3+', label: 'Technologies' },
+        { value: 'BAC D', label: 'Formation initiale' },
+      ],
+      steps: {
+        spark: {
+          title: ' Décembre 2023 — Le déclic',
+          text: 'Tout commence avec un cadeau de Noël : mon premier ordinateur personnel, un ASUS offert par mon père. Avant ça, je ne touchais un clavier que dans les cybercafés pour regarder des animés. Ce jour-là, quelque chose s\'est allumé. Je passais mes journées à explorer les paramètres, à télécharger des jeux, à comprendre comment ça fonctionnait. Mon père, voyant cette curiosité, m\'a confié des tâches sur Word et Excel — et c\'est ainsi que j\'ai appris à maîtriser le clavier, cherché mes premiers tutos sur YouTube, et développé une vraie méthode d\'apprentissage autonome.',
+        },
+        studies: {
+          title: ' UVCI — La découverte du code',
+          text: 'Après mon BAC D au Lycée Moderne de Cocody, j\'ai été orienté à l\'Université Virtuelle de Côte d\'Ivoire. D\'abord en Marketing Digital — un choix qui n\'était pas le mien — puis, après avoir convaincu mon père, j\'ai rejoint la filière Développement d\'Application et E-services. C\'est là que j\'ai découvert l\'algorithmique et le Pascal. Ce fut une révélation : j\'avais toujours aimé la logique depuis la 3ème, et je venais de trouver le domaine qui me correspondait vraiment. J\'ai terminé ma L1 avec 60 crédits.',
+        },
+        epitech: {
+          title: ' WeCode by Epitech — Le tournant',
+          text: 'En novembre 2024, tout en travaillant dans un cybercafé pour sortir de ma zone de confort, je reçois une information dans mon groupe de classe : une formation Fullstack avec WeCode, programme FORPRODE d\'Epitech France. Je me renseigne, je postule, je passe les tests en ligne, en présentiel, puis un entretien. Par la grâce de Dieu, je suis retenu parmi plus de 1 000 candidats. Depuis, j\'ai acquis de solides bases en Laravel, Git, GitHub, Vue.js, React.js, Nest.js et bien d\'autres — bien au-delà de ce que j\'avais appris à l\'UVCI.',
+        },
+        vision: {
+          title: ' Dans 5 ans — Ma vision',
+          text: 'Je me vois Développeur Fullstack Senior, capable de toucher à tout : web, mobile, et peut-être DevOps. Ce domaine est en évolution constante, et c\'est précisément ce qui me passionne. Je suis prêt à apprendre de nouvelles technologies, à m\'adapter à de nouveaux environnements — comme Ubuntu sur lequel je travaille quotidiennement. Cette soif d\'apprendre qui m\'animait avant même de coder continue de me porter chaque jour.',
+        },
+      },
     },
     skills: {
       badge: 'Stack Technique',
@@ -33,12 +63,7 @@ export const translations = {
       title: 'Projets',
       highlight: 'Récents',
       subtitle: 'Une sélection de mes réalisations en développement web et mobile.',
-      filters: {
-        all: 'Tous',
-        web: 'Web',
-        mobile: 'Mobile',
-        fullstack: 'Fullstack',
-      },
+      filters: { all: 'Tous', web: 'Web', mobile: 'Mobile', fullstack: 'Fullstack' },
       cvButton: 'Cliquez ici pour voir mon CV',
       panel: {
         description: 'Description',
@@ -104,7 +129,19 @@ export const translations = {
       github: 'Voir mes projets',
       linkedin: 'Mon profil professionnel',
     },
+    game: {
+      badge: 'Mini-jeu',
+      title: 'Memory Tech',
+      subtitle: 'Retrouve les paires de technologies de mon stack !',
+      start: 'Commencer le jeu',
+      restart: '↺ Recommencer',
+      congrats: 'Félicitations !',
+      well_done: 'Bien joué !',
+      new_record: 'Nouveau record !',
+      stats: { moves: 'Coups', time: 'Temps', record: 'Record', pairs: 'Paires' },
+    },
   },
+
   en: {
     nav: {
       home: 'Home',
@@ -112,6 +149,7 @@ export const translations = {
       projects: 'Projects',
       contact: 'Contact',
       games: 'Games',
+      about: 'About',
     },
     hero: {
       greeting: 'Hello, I am',
@@ -121,6 +159,37 @@ export const translations = {
       contact: 'Contact me',
       downloadCV: 'Download my CV',
       scroll: 'Scroll',
+    },
+    about: {
+      badge: 'About',
+      title: 'My',
+      highlight: 'Journey',
+      subtitle: 'From my first keyboard in a cybercafé to web development — here is my story.',
+      available: 'Available for new opportunities',
+      stats: [
+        { value: '2+', label: 'Years of coding' },
+        { value: '4+', label: 'Projects built' },
+        { value: '10+', label: 'Technologies' },
+        { value: 'BAC D', label: 'High school degree' },
+      ],
+      steps: {
+        spark: {
+          title: ' December 2023 — The spark',
+          text: 'It all started with a Christmas gift: my first personal computer, an ASUS offered by my father. Before that, I only touched a keyboard at cybercafés to watch anime. That day, something clicked. I spent my days exploring settings, downloading games, trying to understand how it all worked. My father, noticing my curiosity, started giving me tasks on Word and Excel — and that\'s how I learned to master the keyboard, found my first YouTube tutorials, and developed a real self-learning method.',
+        },
+        studies: {
+          title: ' UVCI — Discovering code',
+          text: 'After my BAC D at Lycée Moderne de Cocody, I was enrolled at the Virtual University of Côte d\'Ivoire. First in Digital Marketing — not my choice — but after convincing my father, I transferred to Application Development and E-services. That\'s where I discovered algorithms and Pascal. It was a revelation: I had always loved logic since middle school, and I had just found the field that truly matched who I am. I completed my first year with 60 credits.',
+        },
+        epitech: {
+          title: ' WeCode by Epitech — The turning point',
+          text: 'In November 2024, while working at a cybercafé to push myself out of my comfort zone, I received a message in my class group: a Fullstack training program with WeCode, part of Epitech France\'s FORPRODE initiative. I applied, took the online and in-person tests, then an interview. By God\'s grace, I was selected from over 1,000 candidates. Since then, I\'ve built strong foundations in Laravel, Git, GitHub, Vue.js, React.js, Nest.js and more — far beyond what UVCI had taught me.',
+        },
+        vision: {
+          title: ' In 5 years — My vision',
+          text: 'I see myself as a Senior Fullstack Developer, able to work across web, mobile, and possibly DevOps. This field is constantly evolving — and that\'s exactly what drives me. I\'m ready to learn new technologies and adapt to new environments, like Ubuntu which I work on every day. The hunger to learn that fueled me before I ever wrote a line of code still drives me forward today.',
+        },
+      },
     },
     skills: {
       badge: 'Tech Stack',
@@ -139,12 +208,7 @@ export const translations = {
       title: 'Recent',
       highlight: 'Projects',
       subtitle: 'A selection of my web and mobile development work.',
-      filters: {
-        all: 'All',
-        web: 'Web',
-        mobile: 'Mobile',
-        fullstack: 'Fullstack',
-      },
+      filters: { all: 'All', web: 'Web', mobile: 'Mobile', fullstack: 'Fullstack' },
       cvButton: 'Click here to view my CV',
       panel: {
         description: 'Description',
@@ -209,6 +273,17 @@ export const translations = {
       whatsapp: 'Quick response guaranteed',
       github: 'See my projects',
       linkedin: 'My professional profile',
+    },
+    game: {
+      badge: 'Mini-game',
+      title: 'Memory Tech',
+      subtitle: 'Find the matching pairs of technologies from my stack!',
+      start: 'Start game',
+      restart: '↺ Restart',
+      congrats: 'Congratulations!',
+      well_done: 'Well done!',
+      new_record: 'New record!',
+      stats: { moves: 'Moves', time: 'Time', record: 'Record', pairs: 'Pairs' },
     },
   },
 };

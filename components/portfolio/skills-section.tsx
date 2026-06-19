@@ -19,6 +19,7 @@ const categories: SkillCategory[] = [
       { name: 'Next.JS', icon: <Terminal className="h-4 w-4" /> },
       { name: 'Tailwind CSS', icon: <Code2 className="h-4 w-4" /> },
       { name: 'Vue.js', icon: <Code2 className="h-4 w-4" /> },
+      {name : 'React', icon: <Code2 className="h-4 w-4" /> },
     ],
   },
   {

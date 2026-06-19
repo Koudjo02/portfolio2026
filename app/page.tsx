@@ -21,6 +21,8 @@ import { ContactSection } from '@/components/portfolio/contact-section';
 import { Footer } from '@/components/portfolio/footer';
 import { HomePageClient } from '@/components/home-page-client';
 import MemoryGame from '@/components/MemoryGame';
+import { AboutSection } from '@/components/portfolio/about-section';
+
 
 
 /**
@@ -44,11 +46,15 @@ export default function HomePage() {
         {/* Section Projets - Réalisations */}
         <ProjectsSection />
 
-        {/* Section Contact - Formulaire de contact */}
-        <ContactSection />
+        {/* Section À propos - Mon parcours et vision */}
+        <AboutSection />
 
         {/* Section Jeux - Mini-jeu de mémoire */}
           <MemoryGame />
+          
+        {/* Section Contact - Formulaire et informations */}
+        <ContactSection />
+        
       </main>
 
       {/* Pied de page */}

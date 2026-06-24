@@ -41,7 +41,6 @@ const categories: SkillCategory[] = [
     skills: [
       { name: 'MongoDB', icon: <Database className="h-4 w-4" /> },
       { name: 'MySQL', icon: <Database className="h-4 w-4" /> },
-      { name: 'PostgreSQL', icon: <Database className="h-4 w-4" /> },
     ],
   },
   {

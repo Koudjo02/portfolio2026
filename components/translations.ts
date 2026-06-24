@@ -23,10 +23,7 @@ export const translations = {
       highlight: 'Parcours',
       subtitle: 'De mon premier clavier dans un cyber café jusqu\'au développement web — voici mon histoire.',
       available: 'Disponible pour de nouvelles opportunités',
-      stats: [
-        { value: '3+', label: 'Technologies' },
-        { value: 'BAC D', label: 'Formation initiale' },
-      ],
+      stats: [],
       steps: {
         spark: {
           title: ' Décembre 2023 — Le déclic',
@@ -73,6 +70,26 @@ export const translations = {
         code: 'Code',
       },
       items: {
+        rottentomatoes: {
+          description: "Clone de Rotten Tomatoes — plateforme de critiques de films avec système de commentaires CRUD, authentification JWT et gestion des utilisateurs.",
+          role: 'Développeur Fullstack',
+          achievements: [
+            "Développement d'une API REST de commentaires avec Mongoose et Next.js.",
+            "Mise en place de l'authentification JWT sécurisée.",
+            "Résolution des conflits de connexion Mongoose en production.",
+            "Déploiement sur Vercel avec gestion des variables d'environnement MongoDB.",
+          ],
+        },
+        automarket: {
+          description: "Plateforme web de vente et location de véhicules haut de gamme en Côte d'Ivoire. Interface moderne avec catalogue filtrable, fiches détaillées et formulaire de contact.",
+          role: 'Développeur Frontend',
+          achievements: [
+            "Conception et développement d'une interface moderne avec Nuxt 4 et Tailwind CSS.",
+            "Mise en place d'un catalogue filtrable par type (vente / location) avec fiches détaillées.",
+            "Résolution de bugs de production : erreurs SSR/Nitro, problèmes de casse des noms de fichiers sur Linux.",
+            "Déploiement et configuration sur Vercel avec gestion du routing SPA.",
+          ],
+        },
         freeads: {
           description: "Plateforme de petites annonces de particulier à particulier (type LeBonCoin) avec publication d'annonces, moteur de recherche filtré et espace utilisateur complet.",
           role: 'Développeur Fullstack',
@@ -218,6 +235,26 @@ export const translations = {
         code: 'Code',
       },
       items: {
+        rottentomatoes: {
+          description: "Clone de Rotten Tomatoes — plateforme de critiques de films avec système de commentaires CRUD, authentification JWT et gestion des utilisateurs.",
+          role: 'Développeur Fullstack',
+          achievements: [
+            "Développement d'une API REST de commentaires avec Mongoose et Next.js.",
+            "Mise en place de l'authentification JWT sécurisée.",
+            "Résolution des conflits de connexion Mongoose en production.",
+            "Déploiement sur Vercel avec gestion des variables d'environnement MongoDB.",
+          ],
+        },
+        automarket: {
+          description: "Premium vehicle sales and rental web platform for Côte d'Ivoire. Modern interface with filterable catalogue, detailed vehicle pages and contact form.",
+          role: 'Frontend Developer',
+          achievements: [
+            'Designed and built a modern UI with Nuxt 4 and Tailwind CSS.',
+            'Implemented a filterable catalogue by type (sale / rental) with detailed vehicle pages.',
+            'Fixed production bugs: SSR/Nitro errors and Linux filename casing issues.',
+            'Deployed and configured on Vercel with SPA routing setup.',
+          ],
+        },
         freeads: {
           description: 'Peer-to-peer classified ads platform (like LeBonCoin) with ad publishing, filtered search engine and complete user dashboard.',
           role: 'Fullstack Developer',

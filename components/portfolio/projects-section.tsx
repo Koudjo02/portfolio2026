@@ -20,6 +20,8 @@ export interface Project {
 }
 
 const demoProjects: Project[] = [
+  { id: '6', titleKey: 'rottentomatoes', technologies: ['Next.js', 'MongoDB', 'JWT', 'Mongoose', 'REST API'], category: 'fullstack', featured: true, demoUrl: 'https://my-rotten-tomatoes-sandy.vercel.app/', year: '2026', imageUrl: '/projects/rotten-tomatoes.jpg' },
+  { id: '5', titleKey: 'automarket', technologies: ['Nuxt 4', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'Vercel'], category: 'web', featured: true, demoUrl: 'https://automarket-ci.vercel.app', codeUrl: 'https://github.com/Koudjo02/automarket-ci', year: '2026', imageUrl: '/projects/automarket.jpg' },
   { id: '4', titleKey: 'freeads', technologies: ['Laravel', 'MySQL', 'PHP', 'Blade'], category: 'fullstack', featured: true, year: '2026', imageUrl: '/projects/freeads.png' },
   { id: '3', titleKey: 'postit',  technologies: ['Vue.js', 'JavaScript', 'HTML5', 'CSS3', 'REST API'], category: 'web', featured: true, year: '2026', imageUrl: '/projects/postit.png' },
   { id: '1', titleKey: 'yowl',    technologies: ['Laravel', 'MySQL', 'REST API', 'Git', 'MVC'], category: 'fullstack', featured: true, year: '2026', imageUrl: '/projects/yowl.png' },
@@ -27,6 +29,8 @@ const demoProjects: Project[] = [
 ];
 
 const TITLE_MAP: Record<string, string> = {
+  rottentomatoes: 'My Rotten Tomatoes',
+  automarket: 'AutoMarket CI',
   freeads: 'FreeAds',
   postit: 'Post-it',
   yowl: 'Yowl',
@@ -190,12 +194,20 @@ function ProjectCard({ project, index, onSelect }: { project: Project; index: nu
             <span className="rounded-md bg-secondary/60 px-2 py-0.5 text-xs font-medium text-muted-foreground">+{project.technologies.length - 4}</span>
           )}
         </div>
-        {project.codeUrl && (
+        {(project.demoUrl || project.codeUrl) && (
           <div className="flex gap-2 pt-1">
-            <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
-              className="flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
-              <GithubIcon className="h-3.5 w-3.5" />{t.panel.code}
-            </a>
+            {project.demoUrl && (
+              <a href={project.demoUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-emerald-500 px-3 py-2 text-xs font-medium text-white hover:bg-emerald-600 transition-colors">
+                <ExternalLink className="h-3.5 w-3.5" />{t.panel.seeProject}
+              </a>
+            )}
+            {project.codeUrl && (
+              <a href={project.codeUrl} target="_blank" rel="noopener noreferrer" onClick={(e) => e.stopPropagation()}
+                className="flex items-center justify-center gap-1.5 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:bg-primary/90 transition-colors">
+                <GithubIcon className="h-3.5 w-3.5" />{t.panel.code}
+              </a>
+            )}
           </div>
         )}
       </div>

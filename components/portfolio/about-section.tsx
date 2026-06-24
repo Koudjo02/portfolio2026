@@ -6,20 +6,49 @@ import { User, GraduationCap, Target, Briefcase } from 'lucide-react';
 import { useLang } from '@/components/LanguageContext';
 import { translations } from '@/components/translations';
 
+interface Step {
+  icon: React.ReactNode;
+  color: string;
+  bg: string;
+  border: string;
+  title: string;
+  text: string;
+}
+
+function StepCard({ step }: { step: Step }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-100px' });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 40 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      className="flex gap-4 rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm p-5 hover:border-border transition-colors duration-300"
+    >
+      <div className={`shrink-0 flex h-10 w-10 items-center justify-center rounded-xl ${step.bg} ${step.color} border ${step.border}`}>
+        {step.icon}
+      </div>
+      <div>
+        <h3 className="font-semibold text-foreground mb-1">{step.title}</h3>
+        <p className="text-sm text-muted-foreground leading-relaxed">{step.text}</p>
+      </div>
+    </motion.div>
+  );
+}
+
 export function AboutSection() {
   const { lang } = useLang();
   const t = translations[lang].about;
 
-  const ref = useRef<HTMLElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
+  const headerRef = useRef<HTMLDivElement>(null);
+  const headerInView = useInView(headerRef, { once: true, margin: '-80px' });
 
-  const fadeUp = (delay = 0) => ({
-    initial: { opacity: 0, y: 24 },
-    animate: inView ? { opacity: 1, y: 0 } : {},
-    transition: { duration: 0.5, delay },
-  });
+  const photoRef = useRef<HTMLDivElement>(null);
+  const photoInView = useInView(photoRef, { once: true, margin: '-80px' });
 
-  const steps = [
+  const steps: Step[] = [
     { icon: <User className="h-5 w-5" />, color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/20', title: t.steps.spark.title, text: t.steps.spark.text },
     { icon: <GraduationCap className="h-5 w-5" />, color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/20', title: t.steps.studies.title, text: t.steps.studies.text },
     { icon: <Briefcase className="h-5 w-5" />, color: 'text-violet-400', bg: 'bg-violet-500/10', border: 'border-violet-500/20', title: t.steps.epitech.title, text: t.steps.epitech.text },
@@ -27,7 +56,7 @@ export function AboutSection() {
   ];
 
   return (
-    <section ref={ref} id="about" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section id="about" className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Lueurs */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute left-0 top-1/3 h-96 w-96 rounded-full bg-primary/5 blur-3xl" />
@@ -37,7 +66,13 @@ export function AboutSection() {
       <div className="relative mx-auto max-w-6xl">
 
         {/* Header */}
-        <motion.div {...fadeUp(0)} className="mb-16 text-center">
+        <motion.div
+          ref={headerRef}
+          initial={{ opacity: 0, y: 24 }}
+          animate={headerInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-16 text-center"
+        >
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             <User className="h-4 w-4" />
             {t.badge}
@@ -54,7 +89,13 @@ export function AboutSection() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
 
           {/* Photo + infos rapides */}
-          <motion.div {...fadeUp(0.1)} className="lg:col-span-2 flex flex-col items-center gap-6">
+          <motion.div
+            ref={photoRef}
+            initial={{ opacity: 0, y: 24 }}
+            animate={photoInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="lg:col-span-2 flex flex-col items-center gap-6 lg:sticky lg:top-24"
+          >
             <div className="relative">
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-br from-primary to-primary/30 blur-sm opacity-60" />
               <img
@@ -83,26 +124,12 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          {/* Timeline parcours */}
-          <motion.div {...fadeUp(0.2)} className="lg:col-span-3 flex flex-col gap-6">
-            {steps.map((step, i) => (
-              <motion.div
-                key={step.title}
-                initial={{ opacity: 0, x: 20 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
-                className="flex gap-4 rounded-2xl border border-border/50 bg-card/40 backdrop-blur-sm p-5 hover:border-border transition-colors duration-300"
-              >
-                <div className={`shrink-0 flex h-10 w-10 items-center justify-center rounded-xl ${step.bg} ${step.color} border ${step.border}`}>
-                  {step.icon}
-                </div>
-                <div>
-                  <h3 className="font-semibold text-foreground mb-1">{step.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{step.text}</p>
-                </div>
-              </motion.div>
+          {/* Timeline parcours â€” chaque bloc s'anime indÃ©pendamment au scroll */}
+          <div className="lg:col-span-3 flex flex-col gap-6">
+            {steps.map((step) => (
+              <StepCard key={step.title} step={step} />
             ))}
-          </motion.div>
+          </div>
 
         </div>
       </div>

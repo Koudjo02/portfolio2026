@@ -19,7 +19,8 @@ const categories: SkillCategory[] = [
       { name: 'Next.JS', icon: <Terminal className="h-4 w-4" /> },
       { name: 'Tailwind CSS', icon: <Code2 className="h-4 w-4" /> },
       { name: 'Vue.js', icon: <Code2 className="h-4 w-4" /> },
-      {name : 'React', icon: <Code2 className="h-4 w-4" /> },
+      { name: 'React', icon: <Code2 className="h-4 w-4" /> },
+      { name: 'Nuxt.js', icon: <Code2 className="h-4 w-4" /> },
     ],
   },
   {
@@ -41,6 +42,7 @@ const categories: SkillCategory[] = [
     skills: [
       { name: 'MongoDB', icon: <Database className="h-4 w-4" /> },
       { name: 'MySQL', icon: <Database className="h-4 w-4" /> },
+      { name: 'PostgreSQL', icon: <Database className="h-4 w-4" /> },
     ],
   },
   {
@@ -52,6 +54,17 @@ const categories: SkillCategory[] = [
       { name: 'Git / GitHub', icon: <Terminal className="h-4 w-4" /> },
       { name: 'Linux / Bash', icon: <Terminal className="h-4 w-4" /> },
       { name: 'CI/CD', icon: <Terminal className="h-4 w-4" /> },
+    ],
+  },
+  {
+    key: 'languages',
+    icon: <Cpu className="h-5 w-5" />,
+    color: 'text-amber-400 ring-amber-500/30',
+    bg: 'bg-amber-500/10',
+    skills: [
+      { name: 'JavaScript', icon: <Code2 className="h-4 w-4" /> },
+      { name: 'TypeScript', icon: <Code2 className="h-4 w-4" /> },
+      { name: 'PHP', icon: <Server className="h-4 w-4" /> },
     ],
   },
 ];
@@ -131,8 +144,7 @@ export function SkillsSection() {
               key={cat.key}
               cat={cat}
               index={i}
-              name={t.categories[cat.key as keyof typeof t.categories]}
-            />
+              name={(t.categories as Record<string, string>)[cat.key]}            />
           ))}
         </div>
       </div>

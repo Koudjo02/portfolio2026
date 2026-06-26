@@ -53,6 +53,7 @@ export const translations = {
         backend: 'Backend',
         database: 'Base de données',
         tools: 'Outils',
+        languages: 'Languages',
       },
     },
     projects: {
@@ -218,6 +219,7 @@ export const translations = {
         backend: 'Backend',
         database: 'Database',
         tools: 'Tools',
+        languages: 'Languages'
       },
     },
     projects: {

@@ -22,8 +22,8 @@ export interface Project {
 const demoProjects: Project[] = [
   { id: '6', titleKey: 'rottentomatoes', technologies: ['Next.js', 'MongoDB', 'JWT', 'Mongoose', 'REST API'], category: 'fullstack', featured: true, demoUrl: 'https://my-rotten-tomatoes-sandy.vercel.app/', year: '2026', imageUrl: '/projects/rotten-tomatoes.jpg' },
   { id: '5', titleKey: 'automarket', technologies: ['Nuxt 4', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'Vercel'], category: 'web', featured: true, demoUrl: 'https://automarket-ci.vercel.app', codeUrl: 'https://github.com/Koudjo02/automarket-ci', year: '2026', imageUrl: '/projects/automarket.jpg' },
-  { id: '4', titleKey: 'freeads', technologies: ['Laravel', 'MySQL', 'PHP', 'Blade'], category: 'fullstack', featured: true, year: '2026', imageUrl: '/projects/freeads.png' },
-  { id: '3', titleKey: 'postit',  technologies: ['Vue.js', 'JavaScript', 'HTML5', 'CSS3', 'REST API'], category: 'web', featured: true, year: '2026', imageUrl: '/projects/postit.png' },
+{ id: '4', titleKey: 'boutiquedesh', technologies: ['Next.js', 'Tailwind CSS', 'TypeScript', 'Vercel'], category: 'web', featured: true, demoUrl: 'https://la-boutique-des-h.vercel.app/', codeUrl: 'https://github.com/Koudjo02/boutique-des-h', year: '2026', imageUrl: '/projects/boutique-des-h.jpg' },  
+{ id: '3', titleKey: 'postit',  technologies: ['Vue.js', 'JavaScript', 'HTML5', 'CSS3', 'REST API'], category: 'web', featured: true, year: '2026', imageUrl: '/projects/postit.png' },
   { id: '1', titleKey: 'yowl',    technologies: ['Laravel', 'MySQL', 'REST API', 'Git', 'MVC'], category: 'fullstack', featured: true, year: '2026', imageUrl: '/projects/yowl.png' },
   { id: '2', titleKey: 'tikerama', technologies: ['NestJS', 'TypeScript', 'MongoDB', 'Mongoose', 'OAuth', 'Handlebars'], category: 'fullstack', featured: true, year: '2026', imageUrl: '/projects/tikerama.png' },
 ];
@@ -31,7 +31,7 @@ const demoProjects: Project[] = [
 const TITLE_MAP: Record<string, string> = {
   rottentomatoes: 'My Rotten Tomatoes',
   automarket: 'AutoMarket CI',
-  freeads: 'FreeAds',
+  boutiquedesh: 'La Boutique des H.',
   postit: 'Post-it',
   yowl: 'Yowl',
   tikerama: 'Tikerama Clone',

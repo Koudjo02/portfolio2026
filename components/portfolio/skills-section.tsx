@@ -19,7 +19,7 @@ const categories: SkillCategory[] = [
       { name: 'Next.JS', icon: <Terminal className="h-4 w-4" /> },
       { name: 'Vue.js', icon: <Code2 className="h-4 w-4" /> },
       { name: 'React', icon: <Code2 className="h-4 w-4" /> },
-      { name: 'Nuxt.js', icon: <Code2 className="h-4 w-4" /> },
+      { name: 'Angular', icon: <Code2 className="h-4 w-4" /> },
     ],
   },
   {
@@ -63,7 +63,7 @@ const categories: SkillCategory[] = [
     skills: [
       { name: 'JavaScript', icon: <Code2 className="h-4 w-4" /> },
       { name: 'TypeScript', icon: <Code2 className="h-4 w-4" /> },
-      { name: 'PHP', icon: <Server className="h-4 w-4" /> },
+      { name: 'Python', icon: <Server className="h-4 w-4" /> },
     ],
   },
 ];

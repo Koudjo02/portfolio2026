@@ -91,15 +91,15 @@ export const translations = {
             "Déploiement et configuration sur Vercel avec gestion du routing SPA.",
           ],
         },
-        freeads: {
-          description: "Plateforme de petites annonces de particulier à particulier (type LeBonCoin) avec publication d'annonces, moteur de recherche filtré et espace utilisateur complet.",
-          role: 'Développeur Fullstack',
-          achievements: [
-            "Implémentation du système de publication d'annonces avec téléversement et optimisation d'images.",
-            "Création d'un moteur de recherche interne avec filtres dynamiques par prix, mots-clés et catégories.",
-            "Développement de l'espace utilisateur pour gérer, modifier et passer ses annonces en mode \"vendu\".",
-          ],
-        },
+        boutiquedesh: {
+  description: "Plateforme e-commerce haut de gamme pour une maison de confection masculine, spécialisée dans les surchemises, les mailles et le tailoring.",
+  role: 'Développeur Frontend / Intégrateur Web',
+  achievements: [
+    "Intégration d'une interface utilisateur élégante et responsive avec Next.js et Tailwind CSS.",
+    "Mise en place d'une expérience fluide avec un écran de chargement personnalisé et une navigation optimisée.",
+    "Intégration d'un système de recherche intuitive et d'une section dédiée aux avis clients pour renforcer la crédibilité de la marque.",
+  ],
+},
         postit: {
           description: "Application web interactive de type pense-bête — création, modification et suppression de notes en temps réel sur un tableau de bord épuré.",
           role: 'Développeur Frontend',
@@ -257,15 +257,15 @@ export const translations = {
             'Deployed and configured on Vercel with SPA routing setup.',
           ],
         },
-        freeads: {
-          description: 'Peer-to-peer classified ads platform (like LeBonCoin) with ad publishing, filtered search engine and complete user dashboard.',
-          role: 'Fullstack Developer',
-          achievements: [
-            'Implemented an ad publishing system with image upload and optimization.',
-            'Built an internal search engine with dynamic filters by price, keywords and categories.',
-            'Developed a user dashboard to manage, edit and mark ads as sold.',
-          ],
-        },
+        boutiquedesh: {
+  description: "High-end e-commerce platform for a men's ready-to-wear fashion house, specializing in overshirts, knitwear, and tailoring pieces.",
+  role: 'Frontend & Web Developer',
+  achievements: [
+    "Developed an elegant and responsive user interface using Next.js and Tailwind CSS.",
+    "Built a smooth user experience featuring a custom loading screen and optimized navigation.",
+    "Integrated an intuitive search system and a customer reviews section to strengthen brand credibility.",
+  ],
+},
         postit: {
           description: 'Interactive sticky-note web app — create, edit and delete notes in real time on a clean dashboard with data persistence.',
           role: 'Frontend Developer',

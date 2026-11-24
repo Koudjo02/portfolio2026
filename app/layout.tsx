@@ -13,7 +13,8 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Samuel Adzogble | Développeur Fullstack',
+    metadataBase: new URL('https://samuel-adzogblevercelapp.vercel.app'), // ← à remplacer par ton vrai domaine
+  title: 'Samuel Adzogble — Développeur Fullstack React & Next.js',
   description: 'Portfolio d\'Adzogble koudjo samuel, développeur fullstack spécialisé en React, Next.js.',
   icons: {
     icon: '/mon-icône.jpg',

@@ -6,6 +6,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://samuel-adzogblevercelapp.vercel.app',
+    sitemap: 'https://samuel-adzogble.vercel.app/sitemap.xml',
   }
 }
